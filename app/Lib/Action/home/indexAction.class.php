@@ -18,6 +18,7 @@ class indexAction extends frontendAction {
         $where['status'] = 1;                  
         $this->_waterfall($this->post_mod,$where,'post_time desc');        
     }
+
     public function go(){        
         $id=$this->_get('id','intval');
         $url=trim($this->post_mod->where("id=$id")->getField("url"));        

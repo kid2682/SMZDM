@@ -121,6 +121,7 @@ class frontendAction extends baseAction {
 
         $p = !empty($_GET['p']) ? intval($_GET['p']) : 1;
         $sp = !empty($_GET['sp']) ? intval($_GET['sp']) : 1;
+        $ajax = !empty($_GET['ajax']) ? true : false;
         $sp > C('pin_wall_spage_max') && exit;
 
         $list_rows = C('pin_wall_spage_max') * C('pin_wall_spage_size');
@@ -155,7 +156,7 @@ class frontendAction extends baseAction {
         $this->assign('page_bar', $pager->fshow());        
         //print_r($items_list);exit();
         $this->assign($mod->getModelName().'_list', $items_list);
-        if (IS_AJAX&& $sp >=2) {
+        if (IS_AJAX&& $sp >=2 || $ajax) {
             $resp = $this->fetch('public:ajax_'.$mod->getModelName().'_list');
             //print_r();
             $data = array(
