@@ -1,0 +1,140 @@
+<include file="public:header" />
+<form id="info_form" action="{:U(MODULE_NAME.'/'.ACTION_NAME)}" method="post" enctype="multipart/form-data">
+<div class="pad_10">
+	<div class="col_tab">
+		<ul class="J_tabs tab_but cu_li">
+			<li class="current">{:L('article_basic')}</li>
+			<li>{:L('article_seo')}</li>
+		</ul>
+		<div class="J_panes">
+			<div class="content_list pad_10">
+				<table width="100%" cellspacing="0" class="table_form">
+		            <tr>
+						<th style="width: 60px;">商城名称:</th>
+						<td style="width: 680px;">
+		                    <input type="text" name="title" id="J_title" class="input-text" size="60" value="{$info.title}"/>
+		                </td>
+					</tr>
+                    <tr>
+                        <th>所属分类:</th>
+                        <td>
+                            {:html_select('cid',$cate_list,$info['cid'])}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>aid:</th>
+                        <td><input type="text" name="aid" class="input-text" size="60" value="{$info.aid}"/></td>
+                    </tr>                    
+                    <tr>
+                        <th>字母索引:</th>
+                        <td>{:html_select('index',$index_list,$info['index'])}</td>
+                    </tr>
+		            <tr>
+						<th>商城logo:</th>
+						<td>
+                        <notempty name="info['img']"><span class="attachment_icon J_attachment_icon" file-type="image" file-rel="{$img_dir}{$info.img}"><img src="{$img_dir}{$info.img}" width="100" height="100" /></span><br /></notempty>
+                        <input type="file" name="img" class="input-text"  style="width:200px;" />
+                        </td>
+		 			</tr>
+                    <tr>
+                        <th>商城域名:</th>
+                        <td>
+                        <input type="text" name="domain" class="input-text" size="60" value="{$info.domain}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>链接地址:</th>
+                        <td>
+                            <input type="radio" name="url" value="dm" data-val="{$info.url_dm}"/>多麦&nbsp;&nbsp;                            
+                            <input type="radio" name="url" value="yqf"  data-val="{$info.url_yqf}"/> 亿起发&nbsp;&nbsp;
+                            <input type="radio" name="url" value="other"  data-val="{$info.url_other}"/> 其他&nbsp;&nbsp;
+                            <input type="text" name="url_dm" id="url_type" class="input-text" size="60" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>网站CPS:</th>
+                        <td>
+                        <input type="text" name="cps" class="input-text" size="60" value="{$info.cps}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>排序值:</th>
+                        <td>
+                            <input type="text" name="ordid" class="input-text" size="10" value="{$info.ordid}"/>
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <th>商城简介:</th>
+                        <td>
+                            <textarea name="abst" style="width: 379px;height: 100px;">{$info.abst}</textarea>
+                        </td>
+                    </tr>
+		            <tr>
+		                <th>详细内容 :</th>
+						<td><textarea name="info" id="info" style="width:90%;height:300px;visibility:hidden;resize:none;">{$info.info}</textarea></td>
+					</tr>
+                    <tr>
+                        <th>审核状态:</th>
+                        <td>
+                            <label><input type="radio" name="status" value="1" checked="checked"/> 已审核</label>&nbsp;&nbsp;
+                            <label><input type="radio" name="status" value="0"/>未审核
+</label>
+                        </td>
+                    </tr>  
+
+				</table>
+			</div>
+			<div class="content_list pad_10 hidden">
+				<table width="100%" cellspacing="0" class="table_form">
+					<tr>
+						<th width="120">{:L('seo_title')} :</th>
+		 				<td><input type="text" name="seo_title" id="seo_title" class="input-text" size="60" value="{$info.seo_title}"></td>
+					</tr>
+					<tr>
+						<th>{:L('seo_keys')} :</th>
+						<td><input type="text" name="seo_keys" id="seo_keys" class="input-text" size="60" value="{$info.seo_keys}"></td>
+					</tr>
+					<tr>
+						<th>{:L('seo_desc')} :</th>
+						<td><textarea name="seo_desc" id="seo_desc" cols="80" rows="8">{$info.seo_desc}</textarea></td>
+					</tr>
+				</table>
+			</div>
+        </div>
+	</div>
+    <div class="btn_wrap_fixed">
+        <div class="mt10"><input type="submit" value="{:L('submit')}" id="dosubmit" name="dosubmit" class="btn btn_submit" style="margin:0 0 0px 100px;"/></div>      
+    </div>      
+</div>
+<input type="hidden" name="menuid"  value="{$menuid}"/>
+<input type="hidden" name="id" id="id" value="{$info.id}" />
+</form>
+<include file="public:footer" />
+<script src="__STATIC__/js/kindeditor/kindeditor-min.js"></script>
+<script>
+//$('.J_cate_select').cate_select('请选择');
+$(function() {
+	KindEditor.create('#info', {
+		uploadJson : '{:U("attachment/editer_upload")}',
+		fileManagerJson : '{:U("attachment/editer_manager")}',
+		allowFileManager : true
+	});
+	$('ul.J_tabs').tabs('div.J_panes > div');	
+    var url_type=$.trim('{$info.url}')||'dm';
+    checkbox('url',[url_type]);    
+    $('#url_type').attr({'name':'url_'+url_type});
+    if(url_type=='dm'){
+        $('#url_type').val('{$info.url_dm}');
+    }else if(url_type=='yqf'){
+        $('#url_type').val('{$info.url_yqf}');
+    }else if(url_type=='other'){
+        $('#url_type').val('{$info.url_other}');
+    }
+    
+    $('input[name="url"]').click(function(){        
+        $('#url_type').attr({'name':'url_'+$(this).val(),'value':$(this).attr('data-val')})
+    });    
+});
+</script>
+</body>
+</html>

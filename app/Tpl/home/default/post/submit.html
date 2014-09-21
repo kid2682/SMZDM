@@ -1,0 +1,145 @@
+<include file="public:header" />
+<style type="text/css">
+.showtext_body {
+	height: auto;
+	overflow:auto;
+}
+</style>
+<!--内容页开始-->
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix">
+            <div class="contentbox_l fl">
+                <div class="leftinfo">
+                    <div class="crumbBox clearfix">
+        				<span>当前位置:</span>
+                        <a href="/">首页 </a>&gt;&gt;&nbsp;                        
+                        <span class="grey">我要爆料</span>
+        			</div>	
+                </div>
+                <div class="content"> </div>
+                <div class="con_title"> <span class="conName">我要爆料</span> </div>
+                <div class="showinfo pageConBox">
+                    <p>Welcome！什么值得买不仅是信息发布平台，也是一个大家帮助大家的信息分享平台。什么值得买发布的绝大部分信息来自热心网友的爆料。</p>
+                    <p>如果您发现了网购的特价信息，或者想要向本站投稿，亦或者提提意见，都可以通过本页面实现。请选择正确的分类进行爆料，便于编辑进行有效筛选。您的信息越完整，将越容易被及时处理。同时，因为爆料数量较多，编辑也会尽可能的回复爆料，给您以答复。</p>
+                    <p>如果您是在其他来源看到了该信息，请务必准确填写“信息来源”项目，并避免直接抄袭他人文字。请尊重他人的劳动成果，勿进行“伪原创”。爆料平台不接受商家“王婆卖瓜、自卖自夸”，也不希望网友批量爆料某个商城的例行特价（例如易迅早市等），这会对编辑审核带来困扰，还望您的理解。</p>
+                    <p>请尽量选择好品牌、好质量、好价格的产品进行爆料，推荐理由尽量做到言简意赅。根据爆料信息来源、及时程度、特价力度、推荐理由丰富程度的不同，被成功采用的爆料会获得5-100个金币的奖励，您可以通过什么值得买的用户积分计划，换取优惠券、礼品卡或其他实物礼品。</p>
+                </div>
+                <form id="myForm" method="post" class="mainTableBox" action="{:u(MODULE_NAME.'/'.ACTION_NAME)}">
+                    <table cellspacing="0" cellpadding="0" border="0" id="bl_table">
+                        <tbody>
+                            <tr height="45">
+                                <td colspan="2"><input type="radio" name="type" value="0" onclick="dodiv('speinfor')" id="item_bltp_tj" checked="checked">
+                                    <span>特价信息爆料</span>
+                                    <input type="radio" name="type" value="1" onclick="dodiv('draft')" id="item_bltp_tg"/>
+                                    <span>我要投稿</span>
+                                    <input type="radio" name="type" value="2" onclick="dodiv('subbug')" id="item_bltp_bug"/>
+                                    <span>改进建议</span></td>
+                            </tr>
+                            <tr class="speinfor tab_item">
+                                <td class="brokeNewsTitle">标题：</td>
+                                <td><input type="text" id="J_title" name="title" value="" style="width:460px" class="text text-empty" data-default="此处填写商品名称+价格@商城"/></td>
+                            </tr>
+                            <tr class="speinfor tab_item">
+                                <td class="brokeNewsTitle">链接：</td>
+                                <td><input type="text" name="url" value="" style="width:460px" class="text text-empty" data-default="此处填写商品购买链接或活动地址"/>
+                                </td>
+                            </tr>
+                            <tr class="speinfor tab_item">
+                                <td class="brokeNewsTitle">爆料信息来源：</td>
+                                <td>
+                                    <input checked="checked" type="radio" name="orig" value="0"/>
+                                    <span>在其他网站、论坛等渠道看到了此信息</span>
+                                    <input type="radio" name="orig" value="1"/>
+                                    <span>自己在B2C商城网站上找到的此信息</span></td>
+                            </tr>
+                            <tr class="speinfor tab_item" id="tr-item-link">
+                                <td class="brokeNewsTitle">信息来源网址：</td>
+                                <td><input class="text text-empty" style="width:460px" value="" name="web" type="text" data-default="请准确填写信息来源网址"/></td>
+                            </tr>
+                            <tr class="speinfor tab_item">
+                                <td class="brokeNewsTitle">推荐理由：<br>
+                                    <span class="grey">（此处请勿粘贴）</span></td>
+                                <td><textarea class="text text-empty" style="width:460px" name="info_0" data-default="请录入您的推荐理由，包括您认为值得介绍的产品特性、价格优势、下单细节等，此处请勿粘贴，请确保此处内容为原创"></textarea></td>
+                            </tr>
+                            <tr class="draft tab_item" style="display: none;">
+                                <td class="brokeNewsTitle">投稿申请：</td>
+                                <td> 如果您准备向我们投稿（500字以上），请在此提交申请。<br>
+                                    <br>
+                                    <textarea id="un-apply-post-content" class="text text-empty" style="width:460px" name="info_1" data-default="投稿包括但不限于教程、消费提示等项目。请在此处填写您投稿的题目和大体字数并等候我们的站内短信确认"></textarea></td>
+                            </tr>
+                            <tr class="subbug tab_item" style="display: none;">
+                                <td class="brokeNewsTitle">改进建议：</td>
+                                <td><textarea class="text text-empty" style="width:460px" name="info_2" data-default="如果您遇到网站功能、推荐内容的错误，或者对网站有任何建议或意见，请在此向我们进行提交，非常非常感谢。被采纳的建议会有积分感谢。"></textarea></td>
+                            </tr>
+                            <if condition="empty($visitor['id'])">
+                            <tr>
+                                <td class="brokeNewsTitle">邮箱地址：</td>
+                                <td><input class="text text-empty" style="width:460px" value="" name="email" type="text" data-default="请填写邮件地址便于与我们互动，建议您注册并登录后爆料"></td>
+                            </tr>
+                            </if>                            
+                            <tr>
+                                <td class="brokeNewsTitle">&nbsp;</td>
+                                <td>
+                                    <input type="submit" class="submit" value="提交爆料" id="un-feedback-submit"/>
+                                    <div class="blank"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="contentbox_r fr">
+                <div class="rightinfo"> <include file="public:find" /> </div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>
+
+<script type="text/javascript">
+function dodiv(cls){
+    $('.'+cls).show();
+    if(cls=='draft'||cls=='subbug'){
+        $("input[name='title'],input[name='url'],input[name='web']").val('');
+    }else{
+        init_input();
+    }
+    $('.tab_item').each(function(){
+        if(!$(this).hasClass(cls)){
+            $(this).hide();
+        } 
+    });
+}
+$(function(){
+    $('#myForm').ajaxForm({
+        dataType:'json',
+        beforeSubmit:function(data){            
+            var rules=[];
+            if($('input[name="email"]').size()>0){
+                rules.push({name:'email',apply:'email'});
+            }
+            var type=parseInt(data[0].value);
+            if(type==0){
+                rules=[
+                    {name:'title',max:'50',min:2,apply:'string'},
+                    {name:'url',max:'255',min:2,apply:'string'},
+                    {name:'web',max:'255',min:2,apply:'string'}             
+                ];                
+            }
+            rules.push({name:'info_'+type,min:2,apply:'string'});
+            return brv_validate($('#myForm'),rules);
+        },
+        success:function(data){
+            var onclick=$('input[name="type"]:checked').attr('onclick');
+            data.data=data.status==1?'提交成功':'提交失败';
+            $('#myForm')[0].reset();
+            $.ZhiPHP._tip({content:data.data, status:data.status==1});            
+            init_input(); 
+            dodiv('speinfor');
+        }
+    });    
+});
+</script>
+<include file="public:footer" />

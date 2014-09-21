@@ -1,0 +1,55 @@
+<include file="public:header" />
+<!--内容页开始-->
+
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix menber-area"> <include file="menu" />
+            <div class="menber-right">
+                <div class="menber-right-title"> 我的评论<span></span> </div>
+                <!--
+                <ul class="tb">
+                    <li><a class="current" href="http://www.lemai.com/person/comment.html">评论宝贝</a></li>                
+                </ul>
+                -->
+                <div class="my-com" style="clear:both;">
+                    <div class="clearfix">
+                        <empty name="list">
+                            <div class="blank15"></div>
+                            <div class="tips">抱歉，没有更多数据</div>
+                        <else/>
+                            <table width="100%" border="0" class="comment-table">
+                            <colgroup>
+                            <col width="100">
+                            <col>
+                            <col width="113">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th class="cd-tablehead">商品</th>
+                                    <th class="cd-tablehead">评论内容</th>
+                                    <th class="cd-tablehead no-border-right">&nbsp;&nbsp;&nbsp;&nbsp;时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <volist name="list" id="val">
+                                <tr>
+                                    <td class="cd-tablecell"><div class="panel-item-info"> 
+                                        <a title="{$val.post.title}" target="_blank" href="{:u('post/index',array('id'=>$val['post_id']))}" class="label-merchant-services"> 
+                                            <img alt="商品图片" src="data/upload/post/{$val.post.img}" border="0" height="50px"> </a> </div></td>
+                                    <td class="cd-tablecell" style="padding:0 8px;">{$val.info}</td>
+                                    <td class="cd-tablecell" style="text-align:center;">{:date("m-d H:i:s",$val['add_time'])}</td>
+                                </tr>
+                                </volist>
+                            </tbody>
+                        </table>
+                        </empty>
+                    </div>
+                </div>
+                <div class="clearfix page fr" style="margin-top: 16px">{$page}</div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>
+<include file="public:footer" />

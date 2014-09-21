@@ -1,0 +1,32 @@
+<include file="public:header" />
+<!--网站设置-->
+<div class="subnav">
+    <h1 class="title_2 line_x">CPS设置</h1>
+</div>
+<div class="pad_lr_10">
+	<form id="info_form" action="{:u('setting/edit')}" method="post">
+	<table width="100%" class="table_form">        
+        <tr>
+            <th>多麦ID:</th>
+            <td>
+                <input type="text" name="setting[cps_dm]" class="input-text" value="{:C('pin_cps_dm')}" size="40" />
+                (多麦会员ID)
+            </td>
+        </tr>
+        <tr>
+            <th>亿起发ID:</th>
+            <td>
+                <input type="text" name="setting[cps_yqf]" class="input-text" value="{:C('pin_cps_yqf')}" size="40" />
+                (亿起发网站ID)
+            </td>
+        </tr>
+        <tr>
+        	<th></th>
+        	<td><input type="hidden" name="menuid"  value="{$menuid}"/><input type="submit" class="btn btn_submit" value="{:L('submit')}"/></td>
+    	</tr>
+	</table>
+	</form>
+</div>
+<include file="public:footer" />
+</body>
+</html>

@@ -1,0 +1,23 @@
+<include file="public:header" />
+<!--内容页开始-->
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix help">
+            <div class="crumbBox clearfix">
+				<span>当前位置:</span>
+                <a href="/">首页 </a>&gt;&gt;&nbsp;
+                <span class="grey">{$info.title}</span>
+			</div>	        
+            <include file="cate_tree" />
+            <div class="fr content">
+                <h3 class="help_title">{$info.title}</h3>
+                <div class="clearfix">
+                    {$info.info}    
+                </div>
+            </div> 
+        </div>
+    </div>
+    <!--主部结束-->
+</div>	
+<include file="public:footer" />

@@ -1,0 +1,1 @@
+{"0":"article_id","1":"cate_id","_autoinc":false,"_type":{"article_id":"int(10)","cate_id":"int(10)"}}

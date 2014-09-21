@@ -1,0 +1,45 @@
+<include file="public:header" />
+<!--内容页开始-->
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix help">
+            <div class="crumbBox clearfix">
+				<span>当前位置:</span>
+                <a href="/">首页 </a>&gt;&gt;&nbsp;
+                <span class="grey">{$cate_info.name}</span>
+			</div>	        
+            <include file="cate_tree" />
+            <div class="fr content">
+                <h3 class="help_title">{$cate_info.name}</h3>
+                <div class="clearfix faqlist">
+                    <dl>
+                    <volist name="faq_list" id="val">
+                        <dt data-id="{$val.id}">{$val.title}<span></span></dt>
+                        <dd data-id="{$val.id}">{$val.info}</dd>
+                    </volist>   
+                    </dl>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <!--主部结束-->
+</div>	
+<script type="text/javascript">
+$(function(){
+    $('.faqlist dt').live('click',function(){
+        $this=$(this);
+        $dd=$('dd[data-id="'+$this.attr('data-id')+'"]');
+        
+        if($this.hasClass('unfold')){
+            $this.removeClass('unfold');
+            $dd.hide();
+        }else{
+            $this.addClass('unfold');
+            $dd.show();
+            console.log($dd.size());
+        }
+    });
+});
+</script>
+<include file="public:footer" />

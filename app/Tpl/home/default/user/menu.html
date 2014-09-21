@@ -1,0 +1,49 @@
+<load href="__ROOT__/static/css/default/css/user.css" />	
+<div class="menber-left">
+  <div class="u">
+    <div class="u-face">
+      <a href="{:u('user/profile')}"> 
+        <img alt="{$visitor.username}" src="{:avatar($visitor['id'], 100)}"/>
+      </a>
+    </div>
+    <div class="u-info clearfix">
+      <h2 class="ofh">{$visitor.username}</h2>
+    </div>
+  </div>
+  <div class="user-mana">
+    <h2>
+      <a href="{:u('user/index')}">我的值得买</a>
+    </h2>  
+    <dl>
+      <dt <if condition="MODULE_NAME eq 'user' and ACTION_NAME eq 'profile'">class="on"</if>>
+        <a href="{:u('user/profile')}">我的账号</a>
+      </dt>
+    </dl>
+    <dl>
+      <dt <if condition="MODULE_NAME eq 'user' and ACTION_NAME eq 'comments'">class="on"</if>>
+        <a href="{:u('user/comments')}">我的评论</a>
+      </dt>
+    </dl>          
+    <dl>
+      <dt <if condition="MODULE_NAME eq 'user' and ACTION_NAME eq 'favs'">class="on"</if>>
+        <a href="{:u('user/favs')}">我的收藏</a>
+      </dt>
+    </dl>
+    <dl>
+      <dt <if condition="MODULE_NAME eq 'user' and ACTION_NAME eq 'baoliao'">class="on"</if>>
+        <a href="{:u('user/baoliao')}">我的爆料</a>
+      </dt>
+    </dl>
+    <dl>
+      <dt <if condition="MODULE_NAME eq 'user' and ACTION_NAME eq 'score_log'">class="on"</if>>
+        <a href="{:u('user/score_log')}">我的积分</a>
+      </dt>
+    </dl>
+    <dl>
+      <dt <if condition="MODULE_NAME eq 'user' and ACTION_NAME eq 'message'">class="on"</if>>
+        <a href="{:u('user/message')}">我的信箱</a>
+      </dt>
+    </dl> 
+    <br/>
+  </div>
+</div>

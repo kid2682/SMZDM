@@ -1,0 +1,1 @@
+{"db_host":"localhost","db_port":"3306","db_user":"root","db_pass":"52jscn","db_name":"ZhiPHP2","db_prefix":"pin_","admin_user":"admin","admin_pass":"admin","admin_pass_confirm":"admin","admin_email":"admin@admin.com"}

@@ -1,0 +1,48 @@
+<include file="public:header" />
+<!--内容页开始-->
+
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix menber-area"> <include file="menu" />
+            <div class="menber-right">
+                <div class="menber-right-title">我的收藏</div>
+                <!--
+                <ul class="tb">
+                    <li><a class="current" href="{:u('user/favs')}">收藏的宝贝</a></li>
+                </ul>
+                -->
+                <div class="proview clearfix" style="clear:both;">
+                <empty name="list">
+                    <div class="blank15"></div>
+                    <div class="tips">抱歉，没有更多数据</div>
+                <else/>
+                    <volist name="list" id="val"> 
+                        <div class="proview_item J_fav_item" id="J_fav_item_{$val.id}">
+                            <div class="proview_item_pic"> 
+                                <a target="_blank" href="{:u('post/index',array('id'=>$val['post_id']))}" class="pic"> 
+                                    <span class="img-wrap">
+                                        <img src="data/upload/post/{$val.post.img}" border="0"/> 
+                                    </span>
+                                    <div class="compare-overlay">
+                                        <div class="pic-mask"></div>
+                                    </div>
+                                </a>
+                                <div class="fav-panel J_panel">
+                                    <div class="fav-panel-bg"></div>
+                                    <a target="_blank" data-id="{$val.id}" title="删除" class="btn-del J_del">删除</a> 
+                                </div>
+                            </div>
+                            <div class="proview_item_title"> 
+                                <a title="{$val.post.title}" target="_blank" href="{:u('post/index',array('id'=>$val['post_id']))}" class="LS_history">{$val.post.title}<span class="key">&nbsp;&nbsp;&nbsp;{$val.post.prices}</span> </a> </div>
+                        </div>
+                    </volist>
+                </empty>                   
+                </div>
+                <div class="clearfix page fr">{$page}</div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>
+<include file="public:footer" />

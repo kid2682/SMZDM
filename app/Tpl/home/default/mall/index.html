@@ -1,0 +1,76 @@
+<include file="public:header" />
+<!--内容页开始-->
+<div class="main_content">
+	<!--主部开始-->
+	<div id="main">		
+		<div class="contentbox whitebg clearfix">
+		
+			<div class="businessesbox">
+			
+                <div class="crumbBox clearfix">
+    				<span>当前位置:</span>
+                    <a href="/">首页 </a>&gt;&gt;&nbsp;
+                    <span class="grey">商家导航</span>
+    			</div>	
+				
+				<div class="businessesnav clearfix">
+					<h3 class="fl">商家导航</h3>
+					<ul class="fr">
+                        <volist name="list" id="val">
+                            <li><a class="J_scrollto" data-id="mall_{$val.id}">{$val.title}</a>
+                            <if condition="$i lt count($list)">
+                            <em>|</em>
+                            </if>
+                            </li>
+                        </volist>
+					</ul>
+				</div>
+				
+				<div class="business">
+					<script type="text/javascript">
+					$(function($){
+					  $(".business dd").hover(function(){
+						$(this).children('.businesstipbox').css('visibility','visible');
+					  },function() {
+						$(this).children('.businesstipbox').css('visibility','hidden');
+					  });
+					});
+					</script>
+                    <volist name="list" id="val">
+                        <div class="clearfix" id="mall_{$val.id}">
+                        <dl>
+                            <dt class="mall clearfix">{$val.title}</dt>
+                            <volist name="val['child']" id="v">
+                            <dd>
+    							<div class="business_logo">
+    								<a class="businesslogo" href="{:u('mall/info',array('id'=>$v['id']))}" target="_blank"><img src="./data/upload/mall/{$v.img}"/></a>
+    								<a class="businessname" href="{:u('mall/info',array('id'=>$v['id']))}">{$v.title}</a>							
+    							</div>
+    							<div class="businessfoot clearfix">
+    								<a class="mall_info fl" href="{:u('mall/info',array('id'=>$v['id']))}" target="_blank">商情详情</a>
+    								<a class="zhida_mall fr" href="{:mall_url($v)}" target="_blank">直达商城</a>							
+    							</div>
+    							<div class="businesstipbox">
+    								<div class="businesstip">
+    									<h3><a class="blue" href="{:u('mall/info',array('id'=>$v['id']))}" target="_blank">{$v.title}</a></h3>
+    									<div class="tipinfo">{$v.abst}</div>
+    									<div class="tipline">
+    										<strong>推荐指数：</strong>
+    										<span class="dark_red">★★★★★</span>									
+    									</div>
+    								</div>
+    								<div class="tipArrowBot"></div>
+    							</div>
+    						</dd>
+                            </volist>
+                        </dl>     
+                        </div>                   
+                    </volist>					
+				</div>
+			</div>
+		</div>		
+	</div></div>
+	<!--主部结束-->	
+</div>	
+<!--内容页开始-->
+<include file="public:footer" />

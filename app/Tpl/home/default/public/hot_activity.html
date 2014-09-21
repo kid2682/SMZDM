@@ -1,0 +1,8 @@
+<div class="hotactivity">
+    <ul class="clearfix">
+        <li class="hotTitle">当前热门活动</li>
+        <volist name="hot_list" id="val">
+        <li><a href="{:u('post/index',array('id'=>$val['id']))}" <if condition="$val['tcolor']">style="color: {$val.tcolor};"</if> target="_blank" title="{$val.title}">{$val.title}</a></li>
+        </volist>
+    </ul>
+</div>

@@ -1,0 +1,1 @@
+{"0":"id","1":"name","2":"ordid","3":"status","_autoinc":true,"_pk":"id","_type":{"id":"smallint(4) unsigned","name":"varchar(50)","ordid":"tinyint(3) unsigned","status":"tinyint(1)"}}

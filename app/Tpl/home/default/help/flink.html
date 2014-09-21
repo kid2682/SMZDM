@@ -1,0 +1,27 @@
+<include file="public:header" />
+<!--内容页开始-->
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix help">
+            <div class="crumbBox clearfix">
+				<span>当前位置:</span>
+                <a href="/">首页 </a>&gt;&gt;&nbsp;
+                <span class="grey">友情链接</span>
+			</div>	        
+            <include file="cate_tree" />
+            <div class="fr content">
+                <h3 class="help_title">友情链接</h3>
+                <div class="clearfix">
+                    <ul id="link_ul">
+                    <volist name="flink_list" id="val">
+                    <li><a href="{$val.url}" target="_blank">{$val.name}</a></li>
+                    </volist>
+                    </ul> 
+                </div>
+            </div> 
+        </div>
+    </div>
+    <!--主部结束-->
+</div>	
+<include file="public:footer" />

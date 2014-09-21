@@ -1,0 +1,57 @@
+<include file="public:header" />
+<!--内容页开始-->
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix">
+            <div class="contentbox_l fl">
+                <div class="leftinfo">
+                    <div class="clearfix con_title">
+                        <span class="fl">{:L('login_title')}</span>
+                        <div class="fr loginBoxRel"><a href="{:U('user/register')}">注册</a></div>
+                    </div>                                                        
+                    <form id="J_login_form" action="{:U('user/login')}" method="post" class="login_form">
+                        <div class="lg_name clearfix line">
+                            <span>{:L('username')}：</span>
+                            <input type="text" name="username" id="J_name" class="input_text" maxlength="20">
+                        </div>
+                        <div class="lg_pass clearfix line"> 
+                            <span>{:L('password')}：</span>
+                            <input type="password" name="password" id="J_pass" class="input_text" maxlength="32">
+                        </div>
+                        <div class="lg_remember clearfix line">
+                            <span></span>
+                            <input type="checkbox" value="1" name="remember" class="check" checked="checked"/>
+                            <i>{:L('rememberme')}</i>
+                        </div>
+                        <div class="lg_login line">
+                            <span></span>
+                            <input type="submit" value="{:L('login')}" class="submit"/>
+                            <a href="{:U('findpwd/index')}">{:L('forget_password')}</a>     
+                        </div>
+                        <div class="ot_login">
+                            <span>{:L('other_login_model')}：</span>
+                            <div class="ot_btn">
+                                <volist name="oauth_list" id="val">
+                                <a href="{:U('oauth/index', array('mod'=>$val['code']))}" class="mr5"><img src="__STATIC__/images/oauth/{$val.code}/login.png"/></a>
+                                </volist>
+                            </div>
+                        </div>                            
+                    </form>                
+                </div>
+            </div>
+            <div class="contentbox_r fr">
+                <div class="rightinfo">
+                    <include file="public:find" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>	
+<script>
+$(function(){
+    $.ZhiPHP.user.login_validate($('#J_login_form')); //登录验证
+});
+</script>
+<include file="public:footer" />

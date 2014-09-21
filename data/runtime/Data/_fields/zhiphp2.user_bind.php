@@ -1,0 +1,1 @@
+{"0":"uid","1":"type","2":"keyid","3":"info","_autoinc":false,"_type":{"uid":"int(10) unsigned","type":"varchar(60)","keyid":"varchar(100)","info":"text"}}

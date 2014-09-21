@@ -1,0 +1,37 @@
+<include file="public:header" />
+<!--内容页开始-->
+
+<div class="main_content">
+  <!--主部开始-->
+  <div id="main">
+    <div class="contentbox clearfix menber-area"> <include file="menu" />
+      <div class="menber-right">
+        <div class="menber-right-title">修改资料</div>
+        <ul class="tb">
+          <li><a href="{:u('user/profile')}">基本信息</a></li>
+          <li><a class="current" href="{:U('user/bind')}">账号绑定</a></li>
+          <li><a href="{:u('user/password')}">密码修改</a></li>
+        </ul>
+        <div class="main-content">
+          <ul class="bind_form">
+            <volist name="oauth_list" id="val">
+            <li class="clearfix">
+                <span class="icon16 {$val.code}-bind"></span>                
+                <div class="action">
+                    <p class="unbind">{$val.name} <if condition="$val.isbind eq 1">{:L('binded')}{$val.name}<else/>({:L('nobind')})</if></p>
+                    <if condition="$val.isbind eq 1">
+                    <p class="mt5"><a href="{:U('oauth/index', array('type'=>'unbind', 'mod'=>$val['code']))}" class="clr6">{:L('unbind')}</a></p>
+                    <else/>
+                    <p class="bind_result"><a href="{:U('oauth/index', array('type'=>'bind', 'mod'=>$val['code']))}">{:L('gobind')}</a></p>
+                    </if>
+                </div>
+            </li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--主部结束-->
+</div>
+<include file="public:footer" />

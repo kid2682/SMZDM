@@ -1,0 +1,1 @@
+{"0":"id","1":"type","2":"is_sys","3":"name","4":"alias","5":"content","_autoinc":true,"_pk":"id","_type":{"id":"int(10) unsigned","type":"varchar(20)","is_sys":"tinyint(1) unsigned","name":"varchar(50)","alias":"varchar(50)","content":"text"}}

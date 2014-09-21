@@ -1,0 +1,1 @@
+{"0":"id","1":"post_id","2":"rate","3":"uid","4":"add_time","5":"ip","_autoinc":true,"_pk":"id","_type":{"id":"int(10)","post_id":"int(10)","rate":"tinyint(1)","uid":"int(10)","add_time":"int(10)","ip":"varchar(15)"}}

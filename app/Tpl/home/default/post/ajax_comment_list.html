@@ -1,0 +1,44 @@
+<volist name="cmt_list" id="val">
+<li class="clearfix">
+	<div class="commentleft fl">
+		<span class="floor">{$val.floor}楼</span>
+		<a class="commentavatar" href="#" target="_blank">
+            <img src="{:avatar($val['user']['id'])}"/>
+        </a>
+		<div class="comment_grade" title="{$val['user']['score_level']}级">
+            {:user_level($val['user']['score_level'])}
+        </div>
+	</div>
+	<div class="commentright fr">
+		<div class="floor">
+			<div class="commentTime">{:date('Y-m-d H:i:s',$val['add_time'])}</div>
+			<div class="supportbox">
+                <div class="agree">
+                    <span>
+                        <a class="quoteWords J_quote" data-id="{$val.id}" data-uname="{$val.uname}">引用</a>
+                    </span>
+                </div>
+                <div class="agree">
+                    <span><a class="J_at" data-id="{$val.id}" data-at="@{$val.uname}" data-to_id="{$val.uid}" data-to_name="{$val.uname}">@ta</a></span>
+                </div>
+                <div class="opposition">
+                    <span><a class="J_burn" data-id="{$val.id}">踩({$val.burn})</a></span>
+                </div>
+                <div class="opposition">
+                    <span><a class="J_digg" data-id="{$val.id}">顶({$val.digg})</a></span>
+                </div>
+                <div class="cb"></div>
+            </div>
+		</div>
+		<div class="test clearfix">
+            <span class="blue fl">{$val.uname}：</span><p>{$val.info}</p>
+            <span class="edit-comment"></span>
+        </div>
+        <if condition="$val['quote']">
+            <div class="quote">
+                <a class="blue">{$val.quote.uname}:</a>{$val.quote.info}
+            </div>
+        </if>
+	</div>
+</li>
+</volist>

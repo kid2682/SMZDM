@@ -1,0 +1,1 @@
+{"0":"role_id","1":"menu_id","_autoinc":false,"_type":{"role_id":"tinyint(3)","menu_id":"smallint(6)"}}

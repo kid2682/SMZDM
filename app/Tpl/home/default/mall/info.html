@@ -1,0 +1,60 @@
+<include file="public:header" />
+<!--内容页开始-->
+<div class="main_content">
+	<!--主部开始-->
+	<div id="main">		
+		<div class="contentbox whitebg clearfix">
+		
+			<div class="businessesbox">
+			
+                <div class="crumbBox clearfix">
+    				<span>当前位置:</span>
+                    <a href="/">首页 </a>&gt;&gt;&nbsp;
+                    <a href="{:u('mall/index')}">商家导航 </a>&gt;&gt;&nbsp;
+                    <span class="grey">{$info.title}</span>
+    			</div>	
+				
+				<div class="businesinfo clearfix">
+					<a class="businessinfo_logo fl" href="{:mall_url($info)}" target="_blank"><img src="/data/upload/mall/{$info.img}"/></a>
+					<div class="businessinfo_text fr">
+						<h3>{$info.title}</h3>
+						<p><span class="businessinfo_icon">商城地址：</span><em class="businessinfo_textinfo"><a class="blue" href="{:mall_url($info)}" target="_blank">{$info.domain}</a></em>
+						</p>
+						<p><span class="businessinfo_icon1">商城介绍：</span><em class="businessinfo_textinfo">{$info.info}</em>
+						</p>
+					</div>
+				</div>
+				
+				<div class="featured_pro clearfix">
+					<h3 class="fl">精选商品</h3>
+					<a class="fr" href="{:u('tag/index',array('title'=>$info['title']))}" target="_blank">更多></a>
+				</div>
+			
+				<div class="featuredbox clearfix">
+                    <volist name="info['post_list']" id="val">
+					<div class="featured">
+						<div class="product">
+                            <div class="like">
+                                <div class="ilike">
+                                    <a class="J_favs" data-id="{$val.id}">{$val.favs}</a>
+                                    <a class="ilike_icon2" target="_blank" href="{:u('post/index',array('id'=>$val['id']))}#J_messagebox">{$val.comments}</a>
+                                </div>
+                            </div>
+							<div class="pro_img">
+								<a href="{:u('post/index',array('id'=>$val['id']))}" class="proimg_pic" target="_blank"><img src="data/upload/post/{$val.img}"/></a>
+							</div>
+							<div class="zhida" >
+								<a href="{:u('post/index',array('id'=>$val['id']))}" target="_blank">{$val.title}</a>
+							</div>
+						</div>
+					</div>                    
+                    </volist>
+				</div>
+			</div>
+		</div>
+	</div>
+    </div>
+	<!--主部结束-->	
+</div>	
+<!--内容页开始-->
+<include file="public:footer" />

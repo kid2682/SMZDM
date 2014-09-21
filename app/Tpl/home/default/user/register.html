@@ -1,0 +1,78 @@
+<include file="public:header" />
+<!--内容页开始-->
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix">
+            <div class="contentbox_l fl">
+                <div class="leftinfo">
+                    <div class="clearfix con_title">
+                        <span class="fl">{:L('register_title')}</span>
+                        <div class="fr loginBoxRel"><a href="{:U('user/login')}">登录</a></div>
+                    </div>
+                    <div class="loginNotice">
+                    	<div class="fontTitle">为什么要注册什么值得买？<br>您可以：</div>
+                    	<ul class="perNotice">
+                    		<li>与网友进行讨论及互动；</li>
+                    		<li>收藏您喜欢的文章和内容；</li>
+                    		<li>积累积分兑换商家优惠券；</li>
+                    		<li>爆料并获取金币奖励，兑换礼品；</li>
+                    		<li class="iconNone">……</li>	
+                    	</ul>
+                    <div class="clear"></div>
+                    </div>                    
+                    <form id="J_register_form" class="login_form" action="{:U('user/register')}" method="post">
+                    <div class="ipt_mail line">
+                        <span>{:L('email')}：</span><input type="text" maxlength="36" name="email" id="J_email" class="input_text">
+                    </div>
+                    <div class="ipt_ulike line">
+                        <span>{:L('username')}：</span><input maxlength="36" type="text" name="username" id="J_username" class="input_text">
+                    </div>
+                    <div class="ipt_sex line">
+                        <span>{:L('gender')}：</span>
+                        
+                            <label><input type="radio" name="gender" value="0" checked="checked" class="ck"> {:L('female')}</label>
+                            <label><input type="radio" name="gender" value="1" class="ck ml10"> {:L('male')}</label>
+                        
+                    </div>
+                    <div class="ipt_password line">
+                        <span>{:L('password')}：</span><input maxlength="36" type="password" name="password" id="J_password" class="input_text">
+                    </div>
+                    <div class="ipt_respassword line">
+                        <span>{:L('confirm_password')}：</span><input type="password" maxlength="36" name="repassword" id="J_repassword" class="input_text">
+                    </div>
+                    <if condition="C('pin_captcha_status')">
+                        <div class="ipt_check line">
+                            <span>{:L('captcha')}：</span><input type="text" name="captcha" id="J_captcha" maxlength="10" class="check input_text">
+                            <img src="{:U('captcha/'.time())}" id="J_captcha_img" class="captcha_img" alt="{:L('captcha')}" data-url="{:U('captcha/js_rand')}"/>
+                            <a href="javascript:;" id="J_captcha_change">{:L('change_captcha')}</a>
+                        </div>
+                    </if>
+                    <div class="ipt_box line">
+                        <span></span>
+                        <input class="box fl" name="agreement" type="checkbox" checked="checked">
+                        {:L('i_agree')}
+                            《<a href="javascript:;" id="J_protocol_btn">{:C('pin_site_name')}{:L('user_protocol')}</a>》
+                    </div>
+                    <div class="ipt_sub line">
+                        <span></span>
+                        <input type="submit" id="J_regsub" class="submit" value="{:L('relaxed_register')}">
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="contentbox_r fr">
+                <div class="rightinfo">
+                    <include file="public:find" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>	
+<script>
+$(function(){
+    $.ZhiPHP.user.register_form($('#J_register_form')); //注册验证
+});
+</script>
+<include file="public:footer" />

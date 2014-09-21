@@ -1,0 +1,37 @@
+<include file="public:header" />
+<!--内容页开始-->
+
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix menber-area"> <include file="menu" />
+            <div class="menber-right">
+                <div class="menber-right-title"> 我的信箱<span></span> </div>
+                <div class="my-com" style="clear:both;">
+                    <empty name="list">
+                        <div class="blank15"></div>
+                        <div class="tips">抱歉，没有更多数据</div>
+                    <else/>
+                        <table width="100%" border="0" class="comment-table">
+                            <tbody>
+                                <volist name="list" id="val">
+                                <tr>
+                                    <td class="cd-tablecell" height="40px">
+                                    <b>系统：</b>
+                                        {$val.info}
+                                        <span>{:date("Y-m-d H:i:s",$val['add_time'])}</span>
+                                    </td>
+                                </tr>                                
+                                </volist>
+                            </tbody>
+                        </table>
+                    </empty>                    
+                                    
+                </div>
+                <div class="page clearfix fr">{$page}</div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>
+<include file="public:footer" />

@@ -1,0 +1,78 @@
+	<div class="main_content">
+        <div id="main">
+            {:R('advert/index', array(17), 'Widget')}
+        </div>
+    </div>
+    <!--尾部开始-->
+	<div class="footer_wrap">
+		<div id="footer">
+			<div class="footercon">	
+                <ul class="help_list clearfix">
+                    <li class="item">
+                        <h3>发现值得买</h3>
+                        <a href="{:u('post_cate/index',array('id'=>2))}">什么值得买</a>
+                        <a href="{:u('post_cate/index',array('id'=>4))}">海外淘购</a>
+                        <a href="{:u('mall/index')}">返利商家</a>
+                        <a href="{:u('post/submit')}">我要爆料</a>
+                    </li>
+                    <li class="item">
+                        <h3>获取帮助</h3>
+                        <a href="faq.html">常见问题</a>
+                        <a href="fanli.html">商城返利</a>
+                        <a href="weixin.html">微信二维码</a>
+                    </li>
+                    <li class="toplogo item"><a href="/" class=""><img class="fl" src="./data/upload/misc/{:c('pin_site_logo')}"/></a></li>
+                    <li class="item">
+                        <h3>关于网站</h3>
+                        <a href="about.html">关于我们</a>
+                        <a href="contact.html">联系我们</a>
+                        <a href="friends.html">合作伙伴</a>
+                        <a href="flink.html">友情链接</a>
+                        <a href="partner.html">商务合作</a>
+                    </li>
+                    {:R('advert/index', array(8), 'Widget')}  
+                </ul>		
+				<div class="flink">
+                <strong>友情链接：</strong>
+                    <volist name="flink_list" id="val">
+                    <a href="{$val.url}" target="_blank">{$val.name}</a>
+                    </volist>					
+                </div>                
+                <p>© copyright 2010-2013 {:C("pin_site_name")}. All rights reserved. </p>
+                <p>{:C("pin_site_icp")}{:C("pin_statistics_code")}</p>
+			</div>
+		</div>
+	</div>
+	<!--尾部结束-->
+<script>
+var PINER = {
+    root: "__ROOT__",
+    uid: "<?php echo $visitor['id'];?>", 
+    async_sendmail: "<?php echo $async_sendmail;?>",
+    config: {
+        wall_distance: "<?php echo C('pin_wall_distance');?>",
+        wall_spage_max: "<?php echo C('pin_wall_spage_max');?>"
+    },
+    //URL
+    url: {}
+};
+//语言项目
+var lang = {};
+<volist name=":L('js_lang')" id="val">lang.{$key} = "{$val}";</volist>
+</script>    
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/jquery.tools.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/jquery.masonry.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/formvalidator.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/jquery.stickyscroll.js"></script>
+<script type="text/javascript" src="__STATIC__/js/fileuploader.js"></script>
+<script type="text/javascript" src="__STATIC__/js/zhiphp.js"></script>
+<script type="text/javascript" src="__STATIC__/js/front.js"></script>
+<script type="text/javascript" src="__STATIC__/js/dialog.js"></script>
+<script type="text/javascript" src="__STATIC__/js/wall.js"></script>
+<script type="text/javascript" src="__STATIC__/js/comment.js"></script>
+<script type="text/javascript" src="__STATIC__/js/user.js"></script>
+<script type="text/javascript" src="__STATIC__/js/setting.js"></script>
+<script type="text/javascript" src="__STATIC__/js/brivio.validate.js"></script>
+</body>
+</html>    

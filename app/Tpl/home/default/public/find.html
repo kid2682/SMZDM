@@ -1,0 +1,103 @@
+<div class="blank"></div>
+<div style="margin: 0px auto;">
+    <if condition="C('pin_sina_follow_code')">
+    <style type="text/css">
+    .WB_widget{
+        width: 130px;
+        overflow: hidden;
+        float: left;
+    }
+    </style>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    {:C('pin_sina_follow_code')}
+    </if>
+    <if condition="C('pin_qq_follow_code')">
+    {:C('pin_qq_follow_code')}
+    </if>
+</div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_tsina"></a>
+<a class="bds_qzone"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_taobao"></a>
+<span class="bds_more"></span>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+<if condition="MODULE_NAME eq 'post'">
+{:R('advert/index', array(16), 'Widget')}
+<else/>
+{:R('advert/index', array(15), 'Widget')}
+</if>
+
+<div class="J_fixed" style="width: 250px;">
+    <dl>
+        <dt class="clearfix"><h3 class="fl">最新内容</h3><a class="fr" href="{:u('post_cate/index')}" target="_blank">更多</a></dt>
+        <dd class="clearfix">
+            <volist name="new_post_list" id="val">
+                <a href="{:u('post/index',array('id'=>$val['id']))}" target="_blank"><img src="data/upload/post/{$val.img}"/></a>
+            </volist>
+        </dd>
+    </dl>
+    <if condition="MODULE_NAME eq 'post'">
+    {:R('advert/index', array(3), 'Widget')}
+    <else/>
+    {:R('advert/index', array(2), 'Widget')}
+    </if>
+</div>
+<script type="text/javascript">
+$(function() {       
+    if($.browser.safari){
+        var orig_top=$('.J_fixed').offset().top;
+        var offset=40;
+        $(window).scroll(function(){
+            var $jfix=$('.J_fixed');
+            var scroll=$('body').scrollTop(); 
+            var top=$jfix.offset().top-orig_top+40;
+            var max_scroll=$('#J_waterfall').height()+400;
+            //console.log('scroll:'+scroll+',top:'+top);
+//            console.log('bottom:'+(top+$jfix.height())+",max_scroll:"+max_scroll);
+            
+            if(scroll<=orig_top){
+                $jfix.css({
+                    'position':'static'               
+                });
+            }
+            else if(scroll>top&&$jfix.css('position')!='absolute'){
+                if(scroll<max_scroll){
+                    $jfix.css({
+                        'position':'fixed',
+                        'top':offset+'px',
+                        'bottom':'auto',
+                        'right':'auto'
+                    });                
+                }else{                
+                    $jfix.css({
+                        'position':'absolute',
+                        'bottom':'20px',
+                        'right':'20px',
+                        'top':'auto'
+                    });   
+                }            
+            }
+            else if(scroll<top&&$jfix.css('position')=='absolute'){
+                $jfix.css({
+                    'position':'fixed',
+                    'top':offset+'px',
+                    'bottom':'auto',
+                    'right':'auto'
+                });  
+            }      
+        });          
+    }else{
+        $('.J_fixed').stickyScroll({bottomBoundary: 1116,topBoundary:270});
+    }  
+});
+</script>

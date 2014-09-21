@@ -1,0 +1,49 @@
+<include file="public:header" />
+<!--内容页开始-->
+
+<div class="main_content">
+  <!--主部开始-->
+  <div id="main">
+    <div class="contentbox clearfix menber-area"> 
+        <include file="menu" />
+      <div class="menber-right">
+        <div class="menber-right-title">我的账号</div>
+        <div class="grey-bg w700">
+          <div class="p0-15">
+            <p></p>
+            <div class="title"> <span class="c-999">登录帐号：</span><b style="color: #5183C0;">{$info.username}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="c-999">上次登录时间：</span>{:date("Y-m-d H:i:s",$info['last_time'])}</div>
+            <p></p>
+            <div class="hr2"></div>
+            <p> 你有 <b style="color: #5183C0;">0</b> 条未读信息。<span class="btn"><a hidefocus="true" class="i" href="{:u('user/message')}">查看</a> </span> </p>            
+          </div>
+        </div>
+        <div class="menber-right-title"> 我的收藏<span><a href="{:u('user/favs')}">更多»</a> </span> </div>
+        <div class="proview clearfix" style="clear:both;">
+        <volist name="favs_list" id="val"> 
+            <div class="proview_item">
+                <div class="proview_item_pic"> 
+                    <a target="_blank" href="{:u('post/index',array('id'=>$val['post_id']))}" class="pic"> 
+                        <span class="img-wrap">
+                            <img src="data/upload/post/{$val.post.img}" border="0"/> 
+                        </span>
+                        <div class="compare-overlay">
+                            <div class="pic-mask"></div>
+                        </div>
+                    </a>
+                    <div class="fav-panel">
+                        <div class="fav-panel-bg"></div>
+                        <a target="_blank" title="删除" class="btn-del">删除</a> </div>
+                </div>
+                <div class="proview_item_title"> 
+                    <a title="{$val.post.title}" target="_blank" href="{:u('post/index',array('id'=>$val['post_id']))}" class="LS_history">{$val.post.title}<span class="key">&nbsp;&nbsp;&nbsp;{$val.post.prices}</span> </a> </div>
+            </div>
+        </volist>
+        </div>
+        <!-- index_lishi -->
+        <!-- index_comment -->
+      </div>
+    </div>
+  </div>
+  <!--主部结束-->
+</div>
+<include file="public:footer" />

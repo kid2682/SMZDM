@@ -1,0 +1,27 @@
+
+<include file="public:header" />
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix">
+            <div class="contentbox_l fl">
+                <div class="leftinfo">
+                    <div id="login_error">	
+                        <strong>{$error}</strong><br />
+                        </include><a href="{$jumpUrl}">{:L('msg_jump_desc')}</a>
+                    </div>
+                    <script language="javascript">
+                        setTimeout("location.href='{$jumpUrl}';",{$waitSecond}*1000);
+                    </script>
+                </div>
+            </div>
+            <div class="contentbox_r fr">
+                <div class="rightinfo">
+                    <include file="public:find" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>
+<include file="public:footer" />

@@ -1,0 +1,1 @@
+{"0":"id","1":"ftid","2":"from_id","3":"from_name","4":"to_id","5":"to_name","6":"add_time","7":"info","8":"status","_autoinc":true,"_pk":"id","_type":{"id":"int(10)","ftid":"int(10) unsigned","from_id":"int(10)","from_name":"varchar(50)","to_id":"int(10)","to_name":"varchar(50)","add_time":"int(10)","info":"text","status":"tinyint(1)"}}

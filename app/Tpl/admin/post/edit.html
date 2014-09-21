@@ -1,0 +1,228 @@
+<include file="public:header" />
+<style type="text/css">
+#mall_id{
+    width: 200px;
+}
+select[name="index"]{
+    width: 40px;
+}
+</style>
+<form id="info_form" action="{:U(MODULE_NAME.'/'.ACTION_NAME)}" method="post" enctype="multipart/form-data">
+<div class="pad_lr_10">
+	<div class="col_tab">
+		<ul class="J_tabs tab_but cu_li">
+			<li class="current">{:L('article_basic')}</li>
+			<li>{:L('article_seo')}</li>
+		</ul>
+		<div class="J_panes">
+			<div class="content_list pad_10">
+                <table>
+                    <tr>
+                        <td style="width: 780px;">
+            				<table width="100%" cellspacing="0" class="table_form">
+            		            <tr>
+            						<th style="width: 60px;">商品名称:</th>
+            						<td style="width: 680px;">
+            		                    <input type="text" name="title" id="J_title" rel="title_color" class="input-text iColorPicker" size="72" value="{$info.title}" style="color:{$info.tcolor}">
+            		                    <input type="hidden" value="{$info.tcolor}" name="tcolor" id="J_color">
+            					        <a href="javascript:;" class="color_picker_btn"><img class="J_color_picker" data-it="J_title" data-ic="J_color" src="__STATIC__/images/color.png"></a>
+            		                </td>
+            					</tr>
+                                <tr>
+                                    <th>商品链接:</th>
+                                    <td>
+                                        <input type="text" name="post_key" id="J_key" class="input-text" size="60" value="{$info.post_key}"/>&nbsp;<strong>.</strong>html
+          		                        <input type="button" value="{:L('auto_get')}" id="J_getkey" name="tags_btn" class="btn"/></td>
+                                </tr>
+                                <tr>
+                                    <th>商品标签:</th>
+                                    <td>
+                                        <input type="text" name="tags" id="J_tags" class="input-text" size="65" value="{$tags}"/>
+          		                        <input type="button" value="{:L('auto_get')}" id="J_gettags" name="tags_btn" class="btn"/></td>
+                                </tr>
+                                <tr>
+                                    <th>直达链接:</th>
+                                    <td><input type="text" name="url" class="input-text" size="60" value="{$info.url}"/></td>
+                                </tr>
+                                <tr>
+                                    <th>商品价格:</th>
+                                    <td><input type="text" name="prices" class="input-text" size="60" value="{$info.prices}"/></td>
+                                </tr>
+            		            <tr>
+            						<th>商品图片 :</th>
+            						<td>
+                                    <notempty name="info['img']"><span class="attachment_icon J_attachment_icon" file-type="image" file-rel="{$img_dir}{$info.img}"><img src="{$img_dir}{$info.img}" width="100" height="100" /></span><br /></notempty>
+                                    <input type="file" name="img" class="input-text"  style="width:200px;" />
+                                    </td>
+            		 			</tr>
+            		            <tr>
+            						<td colspan="2"><textarea name="info" id="info" style="width:100%;height:350px;visibility:hidden;resize:none;">{$info.info}</textarea></td>
+            					</tr>
+            				</table>                        
+                        </td>
+                        <td valign="top">
+                            <table width="100%" cellspacing="0" class="table_form inner_table">
+            					<tr>
+            						<td>  
+                                        <div class="box">
+                                            <div class="box_title">所属栏目:</div> 
+                                            <div class="box_content" style="height: 250px;overflow-y: scroll;">
+                                                {$cate_tree}
+                                            </div> 
+                                        </div>
+ 			                        </td>
+            					</tr>
+                                <tr>
+                                    <td>
+                                        来源:
+                                        {:html_select('index',get_index(),$mall_index)}
+                                        <select name="mall_id" style="width: 150px;"></select>
+                                    </td>                                    
+                                </tr>
+            		            <tr>
+            						<td>
+                                    作者:
+                                        <input type="text" name="uname" class="input-text" size="30" value="{$info.uname}"/>
+                                    
+                                    </td>
+            					</tr>
+                                <tr>
+                                    <td>
+                                    热门:
+                                    <label><input type="radio" name="is_hot" class="radio_style" value="1" <if condition="$info['is_hot'] eq 1">checked="checked"</if>/> 是</label>&nbsp;&nbsp;
+          							<label><input type="radio" name="is_hot" class="radio_style" value="0"<if condition="$info['is_hot'] eq 0">checked="checked"</if>/>否</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    推荐:
+                                    <label><input type="radio" name="is_recommend" class="radio_style" value="1" <if condition="$info['is_recommend'] eq 1">checked="checked"</if>/> 已推荐</label>&nbsp;&nbsp;
+          							<label><input type="radio" name="is_recommend" class="radio_style" value="0"<if condition="$info['is_recommend'] eq 0">checked="checked"</if>/>未推荐</label>
+                                    </td>
+                                </tr>
+            					<tr>
+            		 				<td>
+                                        审核状态:
+                                        <label><input type="radio" name="status" class="radio_style" value="1" <if condition="$info['status'] eq 1">checked="checked"</if>/> 已通过</label>&nbsp;&nbsp;
+            							<label><input type="radio" name="status" class="radio_style" value="0" <if condition="$info['status'] eq 0">checked="checked"</if>/>未审核</label>
+                                    
+            						</td>
+            					</tr>
+                                <tr>
+            		 				<td>
+                                        定时发布:
+                                        <input type="text" name="post_time" id="J_time_start" class="date" size="22" value="{:date('Y-m-d H:i',$info['post_time'])}"/>
+            						</td>
+            					</tr>
+                                <tr>
+            		 				<td>
+                                        发布状态:
+                                        <if condition="$info['post_time'] elt time()">
+                                        已发布
+                                        <else/>
+                                        <span class="red">未发布</span>
+                                        </if>
+            						</td>
+            					</tr>
+                                
+                                <tr>
+            		 				<td>
+                                        添加时间:{:date("Y-m-d H:i:s",$info['add_time'])}
+            						</td>
+            					</tr>
+            				</table>                        
+                        </td>
+                    </tr>
+                </table>
+			</div>
+			<div class="content_list pad_10 hidden">
+				<table width="100%" cellspacing="0" class="table_form">
+					<tr>
+						<th width="120">{:L('seo_title')} :</th>
+		 				<td><input type="text" name="seo_title" id="seo_title" class="input-text" size="60" value="{$info.seo_title}"></td>
+					</tr>
+					<tr>
+						<th>{:L('seo_keys')} :</th>
+						<td><input type="text" name="seo_keys" id="seo_keys" class="input-text" size="60" value="{$info.seo_keys}"></td>
+					</tr>
+					<tr>
+						<th>{:L('seo_desc')} :</th>
+						<td><textarea name="seo_desc" id="seo_desc" cols="80" rows="8">{$info.seo_desc}</textarea></td>
+					</tr>
+				</table>
+			</div>
+        </div>
+	</div>
+    <div class="btn_wrap_fixed">
+        <div class="mt10"><input type="submit" value="{:L('submit')}" id="dosubmit" name="dosubmit" class="btn btn_submit" style="margin:0 0 0px 100px;"/></div>      
+    </div>    
+</div>
+<input type="hidden" name="menuid"  value="{$menuid}"/>
+<input type="hidden" name="id" id="id" value="{$info.id}" />
+</form>
+<include file="public:footer" />
+<script src="__STATIC__/js/jquery/plugins/colorpicker.js"></script>
+<script src="__STATIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__STATIC__/js/calendar/calendar-blue.css"/>
+<script src="__STATIC__/js/calendar/calendar.js"></script>
+<script>
+Calendar.setup({
+	inputField : "J_time_start",
+	ifFormat   : "%Y-%m-%d %H:%M",
+	showsTime  : true,
+	timeFormat : "24"
+});
+//$('.J_cate_select').cate_select('请选择');
+$(function() {
+	KindEditor.create('#info', {
+		uploadJson : '{:U("attachment/editer_upload")}',
+		fileManagerJson : '{:U("attachment/editer_manager")}',
+		allowFileManager : true,
+        items:['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+		'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+		'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+		'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen',
+		'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+		'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', 'image', 'multiimage', 
+		'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+		'anchor', 'link', 'unlink']
+	});
+	$('ul.J_tabs').tabs('div.J_panes > div');
+	
+	//颜色选择器
+	$('.J_color_picker').colorpicker();
+	//自动获取标签
+	$('#J_gettags').live('click', function() {
+		var title = $.trim($('#J_title').val());
+		if(title == ''){
+			$.ZhiPHP.tip({content:lang.article_title_isempty, icon:'alert'});
+			return false;
+		}
+		$.getJSON('{:U(MODULE_NAME."/ajax_gettags")}', {title:title}, function(result){
+			if(result.status == 1){
+				$('#J_tags').val(result.data);
+			}else{
+				$.ZhiPHP.tip({content:result.msg});
+			}
+		});
+	});
+    _ajax_mall_list($('select[name="index"] option:selected').val());
+    
+    $('select[name="index"]').change(function(){
+        _ajax_mall_list($('option:selected',this).val());
+    });	    
+    function _ajax_mall_list(index){
+        $.post('{:u(MODULE_NAME."/ajax_mall_list")}',{index:index},function(data){        
+            $('select[name="mall_id"]').html(data.data);
+            $('select[name="mall_id"] option[value="{$info.mall_id}"]').attr('selected',true);
+        },'json');        
+    }
+    $('#J_getkey').click(function(){
+        $.post('{:u("post/ajax_post_key")}',{title:$.trim($('#J_title').val())},function(data){
+            $('#J_key').val(data);
+        });
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"0":"id","1":"post_id","2":"pid","3":"uid","4":"uname","5":"info","6":"digg","7":"burn","8":"add_time","9":"status","_autoinc":true,"_pk":"id","_type":{"id":"int(10) unsigned","post_id":"int(10) unsigned","pid":"int(10)","uid":"int(10) unsigned","uname":"varchar(20)","info":"text","digg":"int(10)","burn":"int(10)","add_time":"int(10)","status":"tinyint(1)"}}

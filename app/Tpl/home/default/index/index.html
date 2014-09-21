@@ -1,0 +1,49 @@
+<include file="public:header" />
+
+<!--内容页开始-->
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix">
+
+            <div class="contentbox_l fl">
+
+                <div class="leftinfo">
+                    {:R('advert/index', array(1), 'Widget')}
+                    <if condition="$search['keyword']">
+                        <div class="clearfix crumbBox">当前位置:<a href="/">首页</a>>><strong>"{$search.keyword}"</strong>的搜索结果</div>
+                    </if>
+                    <div class="showinfo">
+                        <if condition="empty($search['keyword'])">
+                            <include file="public:hot_activity" />
+                            <volist name="recommend_list" id="val">
+                            <div class="leftNotice">
+                                <h3><a href="{:u('post/index',array('id'=>$val['id']))}" target="_blank">{$val.title}</a><span>{$val.prices}</span></h3>
+                            </div>
+                            </volist>                        
+                        </if>
+                        <!--产品展示方式开始-->
+                        <div class="product_show" id="J_waterfall" data-uri="__ROOT__/index.php?m={:MODULE_NAME}&a=index&sort={$sort}&p={$p}&keyword={$search.keyword}">        
+                            <include file="public:ajax_post_list" />
+                        </div>
+                        <present name="show_load">
+                        <div id="J_wall_loading" class="wall_loading tc gray"><span>{:L('loading')}</span></div>
+                        </present>
+                        <present name="page_bar">
+                        <div id="J_wall_page" class="wall_page" <present name="show_page">style="display:block;"</present>>
+                            <div class="page">{$page_bar}</div>
+                        </div>
+                        </present>
+                    </div>
+                </div>
+        </div>
+        <div class="contentbox_r fr">
+            <div class="rightinfo" id="rightinfo" style="height: 2000px;">
+                <include file="public:find" />                
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--主部结束-->
+</div>	
+<include file="public:footer" />

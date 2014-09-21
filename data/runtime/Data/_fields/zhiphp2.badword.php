@@ -1,0 +1,1 @@
+{"0":"id","1":"word_type","2":"badword","3":"replaceword","4":"add_time","_autoinc":true,"_pk":"id","_type":{"id":"int(10) unsigned","word_type":"tinyint(1) unsigned","badword":"varchar(100)","replaceword":"varchar(100)","add_time":"int(10)"}}

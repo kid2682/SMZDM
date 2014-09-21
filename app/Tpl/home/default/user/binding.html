@@ -1,0 +1,43 @@
+<include file="public:header" />
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix help">
+            <h1 class="main_title">{:L('binding_title')}</h1>
+            <div class="bind_form clearfix">
+                <div class="bd_avatar fl mr20">
+                    <notempty name="user_bind_info['temp_avatar']">
+                    <img src="__UPLOAD__/avatar/temp/{$user_bind_info.temp_avatar}" class="r5">
+                    <else/>
+                    <img src="{:avatar(0, 100)}" class="r5">
+                    </notempty>
+                </div>
+                <div class="bd_info fl">
+                    <form id="J_bind_form" action="{:U('user/register')}" method="post">
+                    <div class="bd_name clearfix form-row">
+                        <label>{:L('username')}：</label>
+                        <input type="text" name="username" id="J_username" class="base-input" maxlength="20" value="{:urldecode($user_bind_info['pin_user_name'])}">
+                    </div>
+                    <div class="bd_email clearfix form-row">
+                        <label>{:L('email')}：</label>
+                        <input type="text" maxlength="36" name="email" id="J_email" class="base-input"/>
+                    </div>
+                    <div class="bd_pass clearfix form-row">
+                        <label>{:L('password')}：</label>
+                        <input maxlength="36" type="password" id="J_password" name="password" class="base-input"/>
+                    </div>
+                    <div class="bd_repass clearfix form-row">
+                        <label>{:L('confirm_password')}：</label>
+                        <input type="password" maxlength="36" id="J_repassword" name="repassword" class="base-input"/>
+                    </div>
+                    <div class="lg_login clearfix form-row">                        
+                        <input type="hidden" name="type" value="bind"/>
+                        <input type="submit" value="{:L('ok')}" class="submit" style="margin-left: 200px;">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="public:footer" />

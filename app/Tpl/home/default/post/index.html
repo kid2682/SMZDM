@@ -1,0 +1,210 @@
+<include file="public:header" />
+<style type="text/css">
+.showtext_body{
+    height: auto;
+    overflow:auto;
+}
+</style>
+<!--内容页开始-->
+<div class="main_content">
+	<!--主部开始-->
+	<div id="main">		
+		<div class="contentbox clearfix">		
+			<div class="contentbox_l fl">			
+				<div class="leftinfo">				
+					<div class="crumbBox clearfix">
+						<span>当前位置:</span>
+                        <a href="/">首页 </a>&gt;&gt;&nbsp;
+                        <volist name="info['cate_list']" id="c" offset="0" length='4'>
+                            <a href="{:u('post_cate/index',array('id'=>$c['cate_id']))}" target="_blank">{$c.cate.name}</a>
+                            <if condition="$i lt 4">,
+                            <else/>
+                            ……
+                            </if>
+                            
+                        </volist>                        
+                        &nbsp;&gt;&gt;&nbsp;
+                        <span class="grey">日志详情</span>
+					</div>
+					<div class="showinfo">						
+						<div class="showitem">							
+							<div class="showitemTitle clearfix">
+								<h3 class="clearfix">{$info.title}<span>&nbsp;&nbsp;{$info.prices}</span></h3>
+								<div class="showitemTime">{:date("m-d H:i",$info['add_time'])}</div>
+							</div>							
+							<div class="showcont clearfix">
+								
+								<div class="showcont_l fl">
+								
+									<div class="showtext">
+										<div class="showtext_head clearfix">
+											<span class="fl">分类：
+                                                <volist name="info['cate_list']" id="c">
+                                                <a href="{:u('post_cate/index',array('id'=>$c['cate_id']))}" target="_blank">{$c.cate.name}</a>
+                                                <if condition="$i lt count($info['cate_list'])">,</if>
+                                                </volist>
+                                            </span>
+											<span class="fr">推荐人：{$info.uname}</span>
+										</div>
+									</div>
+								</div>								
+								<div class="showcont_r fr">
+									<div class="product">
+										<div class="like">
+											<div class="collect"><a class="J_favs" data-id="{$info.id}">{$info.favs}</a></div>
+											<div class="commentCount"><a href="#J_messagebox">{$info.comments}</a></div>
+										</div>
+										<div class="pro_img">
+											<a class="proimg_pic"><img src="./data/upload/post/{$info.img}"/></a>
+										</div>
+										<div class="zhida" >
+											<a rel="nofollow" href="{:U('index/go',array('id'=>$info['id']))}" class="border_radius_3" target="_blank">直 达 链 接</a>
+										</div>
+									</div>
+									
+									<div class="mall"><span>商城：{$info.mall.title}</span></div>
+								</div>
+							    <div class="showtext_body" style="overflow: visible;">
+										{$info.info}
+								</div>
+							</div>
+							<div class="product_tag"><span>标签：
+                            <volist name="tag_list" id="val">
+                                <a class="blue" href="{:u('tag/index',array('id'=>$val['tag_id']))}" target="_blank">{$val.tag.name}</a>
+                                <if condition="$i lt count($tag_list)">
+                                ,
+                                </if>
+                            </volist>
+                            </span>
+                            </div>
+							
+							<div class="score clearfix">
+						        <div class="score_l fl">
+                                    <span class="evaluate_text">评价文本</span>
+                                    <div class="worth fl">
+                                        <a class="worth_1" data-id="{$info.id}" data-type="rate_best" href="javascript:;" title="超值">{$info.rate_best}</a>
+                                        <a class="worth_2" data-id="{$info.id}" data-type="rate_good" href="javascript:;" title="一般值">{$info.rate_good}</a>
+                                        <a class="worth_3" data-id="{$info.id}" data-type="rate_bad" href="javascript:;" title="不值">{$info.rate_bad}</a>
+                                    </div>
+                                    <span class="rating_text" id="J_rate_result_{$info.id}">{$info["rate_best"]+$info["rate_good"]+$info["rate_bad"]}位网友中的 <i>{$info["rate_best"]+$info["rate_good"]}</i> 位认为值得买！</span>
+                                </div>
+								<div class="score_r fr">
+                                    <!-- Baidu Button BEGIN -->
+                                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"  data="<literal>{</literal>'bdDes':'{$info.title}','text':'{$info.title}',pic:'http://{$server.HTTP_HOST}/data/upload/post/{$info.img}'<literal>}</literal>">
+                                        <span class="fl" style="display: block;padding-top: 6px;">分享到：</span>
+                                        <a class="bds_qzone"></a>
+                                        <a class="bds_tsina"></a>
+                                        <a class="bds_tqq"></a>
+                                        <span class="bds_more"></span>
+                                    </div>
+                                    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=758194" ></script>
+                                    <script type="text/javascript" id="bdshell_js"></script>
+                                    <script type="text/javascript">
+                                        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                                    </script>
+                                    <!-- Baidu Button END -->
+								</div>
+							</div>
+							<if condition="$prev_post">
+                            <div class="product_prev">上一篇：<a class="blue" href="{:U('post/index',array('id'=>$prev_post['id']))}" target="_blank"> {$prev_post.title}</a></div>
+                            </if>
+							<if condition="$next_post">
+							<div class="product_tag">下一篇：<a class="blue" href="{:U('post/index',array('id'=>$next_post['id']))}" target="_blank"> {$next_post.title}</a></div>
+							</if>
+							<!--您可能还喜欢开始-->
+							<div class="feature">
+								<h3>您可能还喜欢</h3>
+								<ul class="clearfix">
+                                    <volist name="like_list" id="val">
+                                    <li>
+										<a class="feature_pic" href="{:u('post/index',array('id'=>$val['id']))}" target="_blank"><img src="./data/upload/post/{$val.img}"></a>
+										<div class="feature_title"><a href="{:u('post/index',array('id'=>$val['id']))}" title="{$val.title}">{$val.title}</a></div>
+									</li>
+                                    </volist>
+								</ul>
+							</div>
+							<!--您可能还喜欢结束-->
+							
+							<!--评论开始-->
+							<div class="comments" id="J_comment_area" data-id="{$info.id}">
+								<div class="comments_head">
+									<ul>
+										<li class="commentsicon">评论</li>
+										<li class="currentcom"><em>全部评论</em>（<span class="blue" id="J_cmt_total">{$cmt_total}</span>）</li>
+										<li class="leave_mess"><a href="#J_messagebox">我要留言</a></li>
+									</ul>
+								</div>
+								<div class="comments_body">
+                                <if condition="$cmt_page">
+                                <div class="commentspage clearfix">
+                                	<div class="page fr J_cmt_page">{$cmt_page}</div>
+                                </div>	                                
+                                </if>
+                                <ul class="commentslist" id="J_cmt_list">
+                                    <include file="ajax_comment_list" />
+                                </ul>	
+                                <if condition="$cmt_page">
+                                <div class="commentspage clearfix">
+                                	<div class="page fr J_cmt_page">{$cmt_page}</div>
+                                </div>	                                
+                                </if>
+								</div>
+							</div>
+							<!--评论结束-->
+							
+							<!--我要留言开始-->
+							<div class="messagebox" id="J_messagebox">
+								<div class="messagebox_head"><h3>我要留言</h3></div>
+                                <div id="J_quote_tip" class="quote_tip clearfix"></div>
+								<div class="messagebox_body clearfix">
+								<if condition="empty($visitor)">
+                                    <p style="line-height: 55px;">
+                                        您必须<a class="blue" href="{:u('user/login')}">登录</a>才能发表评论，<a class="blue" href="{:u('user/register')}">注册</a>新帐号请按这里 , 合作网站登录：
+                                        <volist name="oauth_list" id="val">
+                                        <a href="{:u('oauth/index',array('mod'=>$val['code']))}">
+                                            <img src="static/images/oauth/{$val.code}/icon.png"/>
+                                        </a>
+                                        </volist>
+                                    </p>
+                                <else/>
+                                    <div class="messageleft fl">
+										<a class="commentavatar" href="#" target="_blank"><img src="{:avatar($visitor['id'])}"></a>
+									</div>
+									<div class="messageright fr">
+                                        
+										<textarea class="textareabox" id="J_cmt_content"></textarea>
+										<div class="exitbox clearfix">
+											<div class="exitbox_l fl">
+												登录帐号：
+												<a href="{:u('user/index')}" target="_blank">{$visitor.username}</a>
+												<a href="{:u('user/logout')}" target="_blank">登出</a>
+											</div>
+											<div class="exitbox_r fr">
+                                                <!--
+                                                <div class="fl"><input type="checkbox" class="checkboxbtn" name="comment_connect" value="1" onclick="sinaconnect()">转发到新浪微博</div>
+                                                -->
+												<input class="submit_btn" id="J_cmt_submit" type="button" value="提交"/>
+											</div>
+										</div>
+									</div>
+                                </if>
+								</div>
+							</div>
+							<!--我要留言结束-->
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="contentbox_r fr">
+				<div class="rightinfo">
+					<include file="public:find" />  
+				</div>
+			</div>
+			
+		</div>		
+	</div>
+	<!--主部结束-->	
+</div>
+<include file="public:footer" />

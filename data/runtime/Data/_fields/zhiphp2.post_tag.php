@@ -1,0 +1,1 @@
+{"0":"post_id","1":"tag_id","_autoinc":false,"_pk":"tag_id","_type":{"post_id":"int(10) unsigned","tag_id":"int(10) unsigned"}}

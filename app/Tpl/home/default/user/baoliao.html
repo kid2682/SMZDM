@@ -1,0 +1,80 @@
+<include file="public:header" />
+<!--内容页开始-->
+
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix menber-area"> <include file="menu" />
+            <div class="menber-right">
+                <div class="menber-right-title">我的爆料</div>
+                <ul class="tb">
+                    <li><a <if condition="$type eq 0">class="current"</if> href="{:u('user/baoliao',array('type'=>0))}">特价信息爆料</a></li>
+                    <li><a <if condition="$type eq 1">class="current"</if> href="{:u('user/baoliao',array('type'=>1))}">我要投稿</a></li>
+                    <li><a <if condition="$type eq 2">class="current"</if> href="{:u('user/baoliao',array('type'=>2))}">改进建议</a></li>
+                </ul>
+                <div class="main-content">
+                    <table style="width: 100%;" cellpadding="5" cellspacing="0" class="table_baoliao">
+                    <if condition="$type eq 0">
+                        <empty name="list">
+                            <div class="tips">您还没有爆料特价信息哦，点击<a href="{:u('post/submit')}">这里</a>去爆料</div>
+                        <else/>
+                            <thead>
+                                <tr class="head">
+                                    <th>爆料产品</th>
+                                    <th>链接</th>
+                                    <th>推荐理由</th>
+                                    <th>爆料时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="list" id="v">
+                            <tr>
+                                <td>{$v.title}</td>
+                                <td>{$v.url}</td>
+                                <td>{$v.info}</td>
+                                <td>{:date('Y-m-d',$v['add_time'])}</td>
+                            </tr>
+                            </volist>
+                            </tbody>
+                            <thead>
+                                <tr class="head">
+                                    <th>爆料产品</th>
+                                    <th>链接</th>
+                                    <th>推荐理由</th>
+                                    <th>爆料时间</th>
+                                </tr>
+                            </thead>
+                        </empty>                
+                    <elseif condition="$type eq 1"/>
+                        <empty name="list">
+                            <div class="tips">您还没有投稿哦，点击这里去<a href="{:u('post/submit')}">这里</a>去投稿</div>
+                        <else/>
+                            <volist name="list" id="v">
+                            <tr>
+                                <td>{$v.info}</td>
+                                <td align="right">{:date('Y-m-d',$v['add_time'])}</td>
+                            </tr>
+                            </volist> 
+                        </empty>            
+                    <elseif condition="$type eq 2"/>
+                         <empty name="list">
+                            <div class="tips">您还没有提改进建议哦，点击这里去<a href="{:u('post/submit')}">这里</a>去建议</div>
+                        <else/>
+                            <volist name="list" id="v">
+                            <tr>
+                                <td>{$v.info}</td>
+                                <td align="right">{:date('Y-m-d',$v['add_time'])}</td>
+                            </tr>
+                            </volist> 
+                        </empty>    
+                    </if>
+                    </table>
+                    <div class="blank15"></div>
+                    <div class="page">{$page}</div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>
+<include file="public:footer" />

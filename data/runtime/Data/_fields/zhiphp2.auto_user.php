@@ -1,0 +1,1 @@
+{"0":"id","1":"name","2":"users","_autoinc":true,"_pk":"id","_type":{"id":"smallint(4) unsigned","name":"varchar(100)","users":"text"}}

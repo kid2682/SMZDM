@@ -1,0 +1,1 @@
+{"0":"cate_id","1":"title","2":"info","3":"seo_title","4":"seo_keys","5":"seo_desc","6":"last_time","_autoinc":false,"_pk":"cate_id","_type":{"cate_id":"smallint(4) unsigned","title":"varchar(120)","info":"text","seo_title":"varchar(255)","seo_keys":"varchar(255)","seo_desc":"text","last_time":"int(10) unsigned"}}

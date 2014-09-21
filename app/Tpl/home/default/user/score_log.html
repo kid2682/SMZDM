@@ -1,0 +1,31 @@
+<include file="public:header" />
+<!--内容页开始-->
+
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix menber-area"> <include file="menu" />
+            <div class="menber-right">
+                <div class="menber-right-title">我的积分</div>                
+                <div class="main-content">
+                        <empty name="list">
+                            <div class="tips">抱歉，没有更多数据</div>
+                        <else/>
+                            <table style="width: 100%;" cellpadding="5" cellspacing="0" class="table_baoliao">
+                            <volist name="list" id="v">
+                            <tr>
+                                <td>{:L($v['action'])}积分,奖励{$v.score}积分</td>
+                                <td align="right">{:date('Y-m-d H:i:s',$v['add_time'])}</td>
+                            </tr>
+                            </volist>
+                            </table>
+                        </empty>
+                    <div class="blank15"></div>
+                    <div class="page">{$page}</div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>
+<include file="public:footer" />

@@ -1,0 +1,30 @@
+<include file="public:header" />
+<!--网站设置-->
+<div class="subnav">
+    <h1 class="title_2 line_x">微博关注</h1>
+</div>
+<div class="pad_lr_10">
+	<form id="info_form" action="{:u('setting/edit')}" method="post">
+	<table width="100%" class="table_form">        
+        <tr>
+            <th>新浪微博关注:</th>
+            <td>
+                <textarea rows="4" cols="50" name="setting[sina_follow_code]" id="sina_follow_code">{:C('pin_sina_follow_code')}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <th>腾讯微博关注:</th>
+            <td>
+                <textarea rows="4" cols="50" name="setting[qq_follow_code]" id="qq_follow_code">{:C('pin_qq_follow_code')}</textarea>
+            </td>
+        </tr>
+        <tr>
+        	<th></th>
+        	<td><input type="hidden" name="menuid"  value="{$menuid}"/><input type="submit" class="btn btn_submit" value="{:L('submit')}"/></td>
+    	</tr>
+	</table>
+	</form>
+</div>
+<include file="public:footer" />
+</body>
+</html>

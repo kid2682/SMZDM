@@ -1,0 +1,1 @@
+{"0":"id","1":"uid","2":"title","3":"url","4":"orig","5":"web","6":"info","7":"email","8":"add_time","9":"type","_autoinc":true,"_pk":"id","_type":{"id":"int(10)","uid":"int(10)","title":"varchar(255)","url":"varchar(255)","orig":"int(11)","web":"varchar(255)","info":"text","email":"varchar(255)","add_time":"int(10)","type":"tinyint(4)"}}

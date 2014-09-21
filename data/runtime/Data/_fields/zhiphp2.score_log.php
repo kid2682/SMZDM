@@ -1,0 +1,1 @@
+{"0":"id","1":"uid","2":"uname","3":"action","4":"score","5":"add_time","_autoinc":true,"_pk":"id","_type":{"id":"int(10)","uid":"int(10)","uname":"varchar(50)","action":"varchar(50)","score":"int(10)","add_time":"int(10)"}}

@@ -1,0 +1,65 @@
+<include file="public:header" />
+<style type="text/css">
+#mall_id{
+    width: 200px;
+}
+</style>
+<form id="info_form" action="{:U(MODULE_NAME.'/'.ACTION_NAME)}" method="post" enctype="multipart/form-data">
+<div class="pad_lr_10">
+	<div class="col_tab">
+		<ul class="J_tabs tab_but cu_li">
+			<li class="current">{:L('article_basic')}</li>			
+		</ul>
+		<div class="J_panes">
+			<div class="content_list pad_10">
+                <table class="table_form">
+                <tr>
+					<th style="width: 160px;">商品名称:</th>
+					<td style="width: 680px;">
+	                    <input type="text" name="title" id="J_title" class="input-text" size="72" value="{$info.title}" style="color:{$info.tcolor}"/>
+	                </td>
+				</tr>
+                <tr>
+                    <th>链接:</th>
+                    <td><input type="text" name="url" class="input-text" size="72" value="{$info.url}"/></td>
+                </tr>
+                <tr>
+                    <th>爆料信息来源:</th>
+                    <td>
+                        <input type="radio" name="orig" class="input-text" size="60" value="0"/>
+                        在其他网站、论坛等渠道看到了此信息
+                        <input type="radio" name="orig" class="input-text" size="60" value="1"/>
+                        自己在B2C商城网站上找到的此信息
+                    </td>
+                </tr>
+                <tr>
+                    <th>信息来源网址：</th>
+                    <td>
+                        <input type="text" name="web" class="input-text" size="72" value="{$info.web}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>推荐理由：</th>
+                    <td>
+                        <textarea name="info" style="width: 441px;height: 50px;">{$info.info}</textarea>
+                    </td>
+                </tr>
+                </table>
+			</div>
+        </div>
+	</div>
+    <div class="btn_wrap_fixed">
+        <div class="mt10"><input type="submit" value="{:L('submit')}" id="dosubmit" name="dosubmit" class="btn btn_submit" style="margin:0 0 0px 100px;"/></div>      
+    </div>    
+</div>
+<input type="hidden" name="menuid"  value="{$menuid}"/>
+<input type="hidden" name="id" id="id" value="{$info.id}" />
+</form>
+<include file="public:footer" />
+<script>
+$(function() {
+    checkbox('orig',[{$info.orig}]);
+});
+</script>
+</body>
+</html>

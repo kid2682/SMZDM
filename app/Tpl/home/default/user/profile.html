@@ -1,0 +1,76 @@
+<include file="public:header" />
+<!--内容页开始-->
+
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main">
+        <div class="contentbox clearfix menber-area"> <include file="menu" />
+            <div class="menber-right">
+                <div class="menber-right-title">修改资料</div>
+                <ul class="tb">
+                    <li><a class="current" href="{:u('user/profile')}">基本信息</a></li>
+                    <li><a href="{:U('user/bind')}">账号绑定</a></li>
+                    <li><a href="{:u('user/password')}">密码修改</a></li>
+                </ul>
+                <div class="main-content">
+                    <div class="set-info">
+                        <form action="{:u(MODULE_NAME.'/'.ACTION_NAME)}" method="post" class="set-form">
+                            <div class="form-row">
+                                <label>用户名：</label>
+                                <span class="theemail">{$info.username}</span> </div>
+                            <div class="form-row">
+                                <label>邮箱：</label>
+                                <span class="theemail yc">{$info.email}</span> </div>
+                            <div class="form-row clearfix">
+                                <label>性别：</label>
+                                <div class="sex">
+                                    <input type="radio" class="ml5 mr5" name="gender" value="1"/>
+                                    <span class="radio-txt">男</span>
+                                    <input type="radio" class="ml20 mr5" name="gender" value="0"/>
+                                    <span class="radio-txt">女</span> </div>
+                            </div>
+                            <div class="form-row">
+                                <label>生日：</label>
+                                <input class="base-input" id="J_birthday" type="text" value="{$info.byear}-{$info.bmonth}-{$info.bday}" name="birthday"/>
+                            </div>
+                            <div class="form-row">
+                                <label>所在地：</label>
+                                <select id="J_province" name="province"></select> 
+                                <select id="J_city" name="city"></select>
+                            </div>
+                            <div class="form-row">
+                                <label>自我介绍：</label>
+                                <textarea placeholder="介绍一下自己吧~" name="intro" class="base-txa intro-txa">{$info.intro}</textarea>
+                            </div>
+                            <div class="form-row pt10">
+                                <label>&nbsp;</label>
+                                <input type="submit" value="保存" class="bbl-btn submit">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="set-pic"> 
+                        <img style="border: 1px solid #D0D0D0; padding: 2px;" alt="" src="{:avatar($info['id'], 200)}" id="J_avatar"/>
+                        <div class="mt5"> <a id="J_upload_avatar" class="upload_btn mt5">修改头像</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>
+<link rel="stylesheet" href="__STATIC__/js/calendar/calendar-blue.css"/>
+<script src="__STATIC__/js/calendar/calendar.js"></script>
+<script src="__STATIC__/js/minicity.js"></script>
+<script type="text/javascript">
+Calendar.setup({
+	inputField : "J_birthday",
+	ifFormat   : "%Y-%m-%d",
+	showsTime  : false,
+	timeFormat : "24"
+});
+$(function(){
+    checkbox('gender',[{$info.gender}]);
+    $.minicity( "#J_province", "#J_city", "<?php echo $info['province'];?>", "<?php echo $info['city'];?>");
+});
+</script>
+<include file="public:footer" />
